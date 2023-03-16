@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">My Application_pr5</string>
+    <string name="button_name_first">Войти</string>
+    <string name="text_name_1">Фамилия</string>
+    <string name="text_name_2">Имя</string>
+    <string name="text_name_3">Отчество</string>
+    <string name="text_name_4">Пароль</string>
+    <string name="text_name_5">Автосалон</string>
+    <string name="button_name_2">Автомобили</string>
+    <string name="button_name_3">Владельцам</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
