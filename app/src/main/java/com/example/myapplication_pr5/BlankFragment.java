@@ -30,7 +30,12 @@ public class BlankFragment extends Fragment {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_blankFragment_to_blankFragment23);
+                EditText nameText = (EditText) view1.findViewById(R.id.editTextTextPersonName);
+                EditText nameText1 = (EditText) view1.findViewById(R.id.editTextTextPersonName2);
+                Bundle bundle = new Bundle();
+                bundle.putString("fam", nameText.getText().toString());
+                bundle.putString("name",nameText1.getText().toString());
+                Navigation.findNavController(view).navigate(R.id.action_blankFragment_to_blankFragment23, bundle);
             }
         });
 
