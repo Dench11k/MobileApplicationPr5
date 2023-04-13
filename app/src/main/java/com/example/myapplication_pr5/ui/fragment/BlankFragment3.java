@@ -1,4 +1,4 @@
-package com.example.myapplication_pr5;
+package com.example.myapplication_pr5.ui.fragment;
 
 import android.Manifest;
 import android.app.NotificationChannel;
@@ -21,6 +21,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.myapplication_pr5.R;
 
 
 public class BlankFragment3 extends Fragment {

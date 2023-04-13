@@ -1,4 +1,4 @@
-package com.example.myapplication_pr5;
+package com.example.myapplication_pr5.ui.fragment;
 
 import android.os.Bundle;
 
@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.myapplication_pr5.R;
 
 
 public class BlankFragment extends Fragment {

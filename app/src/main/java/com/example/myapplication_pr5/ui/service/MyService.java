@@ -1,4 +1,4 @@
-package com.example.myapplication_pr5;
+package com.example.myapplication_pr5.ui.service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.example.myapplication_pr5.R;
 
 public class MyService extends Service {
     private WindowManager windman;

@@ -1,4 +1,4 @@
-package com.example.myapplication_pr5;
+package com.example.myapplication_pr5.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -7,6 +7,8 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.example.myapplication_pr5.R;
 
 public class MainActivity extends AppCompatActivity {
     NavController navController;
