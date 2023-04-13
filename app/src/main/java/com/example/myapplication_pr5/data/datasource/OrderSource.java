@@ -1,4 +1,4 @@
-package com.example.myapplication_pr5.ui.viewmodel;
+package com.example.myapplication_pr5.data.datasource;
 
 import android.os.Bundle;
 
@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.myapplication_pr5.R;
 
-
-public class OrdersRepository extends Fragment {
+public class OrderSource {
 
 
 }
