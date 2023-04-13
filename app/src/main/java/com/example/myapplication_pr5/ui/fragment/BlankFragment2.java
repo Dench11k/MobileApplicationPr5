@@ -2,25 +2,33 @@ package com.example.myapplication_pr5.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myapplication_pr5.R;
+import com.example.myapplication_pr5.data.model.Car;
+import com.example.myapplication_pr5.ui.adapter.CarAdapter;
+import com.example.myapplication_pr5.ui.viewmodel.CarViewModel;
+
+import java.util.ArrayList;
 
 
 public class BlankFragment2 extends Fragment {
     private String fam;
     private  String name;
+    CarViewModel carViewModel;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        carViewModel = new ViewModelProvider(this).get(CarViewModel.class);
         fam = getArguments().getString("fam");
         name = getArguments().getString("name");
     }
@@ -53,4 +61,12 @@ public class BlankFragment2 extends Fragment {
         });
         return view1;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        CarAdapter carAdapter = new CarAdapter(getContext());
+        carViewModel.cars.observe(getViewLifecycleOwner(), cars -> carAdapter.updateCars(cars));
+    }
+
 }
