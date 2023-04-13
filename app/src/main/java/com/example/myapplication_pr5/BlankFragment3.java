@@ -1,7 +1,15 @@
 package com.example.myapplication_pr5;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -18,9 +26,16 @@ import android.widget.Toast;
 public class BlankFragment3 extends Fragment {
     private String fam;
     private  String name;
+    private static final int NOTIFY_ID = 101;
+    private static String CHANNEL_ID = "Car channel";
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Channel 2";
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = getContext().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
         fam = getArguments().getString("fam");
         name = getArguments().getString("name");
     }
@@ -34,6 +49,17 @@ public class BlankFragment3 extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                NotificationCompat.Builder builder = new
+                        NotificationCompat.Builder(getContext(), CHANNEL_ID)
+                        .setSmallIcon(R.drawable.ic_launcher_foreground)
+                        .setContentTitle(getString(
+                                R.string.text_name_5))
+                        .setContentText("Автомобиль успешно забронирован!")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                    notificationManager.notify(NOTIFY_ID, builder.build());
+                }
                 EditText nameText = (EditText) view1.findViewById(R.id.editTextCar);
                 TextView nameText2 = (TextView) view1.findViewById(R.id.textView11);
                 TextView nameText1 = (TextView) view1.findViewById(R.id.textView17);
