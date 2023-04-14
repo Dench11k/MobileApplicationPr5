@@ -1,4 +1,4 @@
-package com.example.myapplication_pr5.ui.service;
+package com.example.myapplication_pr5;
 
 import android.app.Service;
 import android.content.Intent;

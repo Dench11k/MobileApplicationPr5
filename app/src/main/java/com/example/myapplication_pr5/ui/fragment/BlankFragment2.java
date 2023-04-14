@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication_pr5.R;
@@ -28,7 +29,6 @@ public class BlankFragment2 extends Fragment {
     CarViewModel carViewModel;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        carViewModel = new ViewModelProvider(this).get(CarViewModel.class);
         fam = getArguments().getString("fam");
         name = getArguments().getString("name");
     }
@@ -59,14 +59,20 @@ public class BlankFragment2 extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_blankFragment2_to_blankFragment33, bundle);
             }
         });
+        ImageView imageView = view1.findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView nameText = (TextView) view1.findViewById(R.id.textView9);
+                TextView nameText1 = (TextView) view1.findViewById(R.id.textView10);
+                Bundle bundle = new Bundle();
+                bundle.putString("fam", nameText.getText().toString());
+                bundle.putString("name",nameText1.getText().toString());
+                Navigation.findNavController(view).navigate(R.id.action_blankFragment2_to_blankFragment4, bundle);
+            }
+        });
         return view1;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        CarAdapter carAdapter = new CarAdapter(getContext());
-        carViewModel.cars.observe(getViewLifecycleOwner(), cars -> carAdapter.updateCars(cars));
-    }
 
 }

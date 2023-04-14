@@ -13,8 +13,8 @@ public class CarSource {
     public static LiveData<List<Car>> createList() {
         MutableLiveData<List<Car>> list = new MutableLiveData<>();
         ArrayList<Car> cars = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            Car tmp = new Car(R.drawable.sedan, "Lada Granta");
+        for (int i = 1; i < 10; i++) {
+            Car tmp = new Car(R.drawable.sedan, "Lada Granta, комплектация " + i);
             cars.add(tmp);
         }
         list.setValue(cars);

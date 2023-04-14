@@ -28,7 +28,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder>{
     }
 
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.fragment_blank3, parent,
+        View view = inflater.inflate(R.layout.fragment_blank5, parent,
                 false);
         return new ViewHolder(view);
     }
@@ -55,13 +55,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder>{
             super(view);
             imageView = view.findViewById(R.id.imageView2);
             nameView = view.findViewById(R.id.textView);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.i("RecyclerView","element click");
-                    Toast.makeText(view.getContext(), "You click!", Toast.LENGTH_SHORT).show();
-                }
-            });
+
         }
     }
 

@@ -17,17 +17,44 @@
     <fragment
         android:id="@+id/blankFragment2"
         android:name="com.example.myapplication_pr5.ui.fragment.BlankFragment2"
-        android:label="BlankFragment2" >
+        android:label="BlankFragment2"
+        tools:layout="@layout/fragment_blank2">
         <action
             android:id="@+id/action_blankFragment2_to_blankFragment33"
             app:destination="@id/blankFragment3" />
+        <action
+            android:id="@+id/action_blankFragment2_to_blankFragment4"
+            app:destination="@id/blankFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment4"
+        android:name="com.example.myapplication_pr5.ui.fragment.BlankFragment4"
+        android:label="BlankFragment4"
+        tools:layout="@layout/fragment_blank4" >
+        <action
+            android:id="@+id/action_blankFragment4_to_blankFragment2"
+            app:destination="@id/blankFragment2" />
     </fragment>
     <fragment
         android:id="@+id/blankFragment3"
         android:name="com.example.myapplication_pr5.ui.fragment.BlankFragment3"
-        android:label="BlankFragment3" >
+        android:label="BlankFragment3"
+        tools:layout="@layout/fragment_blank3">
         <action
             android:id="@+id/action_blankFragment3_to_blankFragment23"
             app:destination="@id/blankFragment2" />
+        <action
+            android:id="@+id/action_blankFragment3_to_blankFragment5"
+            app:destination="@id/blankFragment5" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment5"
+        android:name="com.example.myapplication_pr5.ui.fragment.BlankFragment5"
+        android:label="BlankFragment5"
+        tools:layout="@layout/fragment_blank5">
+
+        <action
+            android:id="@+id/action_blankFragment5_to_blankFragment3"
+            app:destination="@id/blankFragment3" />
     </fragment>
 </navigation>

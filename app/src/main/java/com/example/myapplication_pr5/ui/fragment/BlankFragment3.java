@@ -72,6 +72,14 @@ public class BlankFragment3 extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_blankFragment3_to_blankFragment23,bundle);
             }
         });
+
+        Button button23 = view1.findViewById(R.id.button4);
+        button23.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_blankFragment3_to_blankFragment5);
+            }
+        });
         return view1;
     }
 }
