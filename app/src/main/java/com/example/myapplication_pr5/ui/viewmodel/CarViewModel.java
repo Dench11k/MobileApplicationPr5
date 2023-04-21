@@ -17,7 +17,7 @@ import java.util.List;
 
 
 public class CarViewModel extends AndroidViewModel {
-        private LiveData<List<Car>> cars;
+        private final LiveData<List<Car>> cars;
         private CarsRepository carsRepository;
         public CarViewModel (Application application) {
         super(application);

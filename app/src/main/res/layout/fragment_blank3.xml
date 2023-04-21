@@ -125,6 +125,6 @@
         android:layout_marginStart="123dp"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="122dp"
-        android:text="Lada Granta" />
+        android:text="Каталог" />
 
 </RelativeLayout>

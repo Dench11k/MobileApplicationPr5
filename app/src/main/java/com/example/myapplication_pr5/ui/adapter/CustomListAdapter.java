@@ -39,6 +39,7 @@ public class CustomListAdapter extends ArrayAdapter<Car> {
         return view;
     }
     public void updateCars(List<Car> cars) {
-        items = cars;
+        this.items = cars;
+        notifyDataSetChanged();
     }
 }

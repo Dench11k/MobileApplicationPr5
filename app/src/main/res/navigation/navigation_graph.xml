@@ -56,5 +56,17 @@
         <action
             android:id="@+id/action_blankFragment5_to_blankFragment3"
             app:destination="@id/blankFragment3" />
+        <action
+            android:id="@+id/action_blankFragment5_to_blankFragment6"
+            app:destination="@id/blankFragment6" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment6"
+        android:name="com.example.myapplication_pr5.ui.fragment.BlankFragment6"
+        android:label="fragment_blank6"
+        tools:layout="@layout/fragment_blank6" >
+        <action
+            android:id="@+id/action_blankFragment6_to_blankFragment5"
+            app:destination="@id/blankFragment5" />
     </fragment>
 </navigation>

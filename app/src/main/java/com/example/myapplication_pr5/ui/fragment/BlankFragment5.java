@@ -7,7 +7,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +20,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.myapplication_pr5.R;
+import com.example.myapplication_pr5.data.model.Car;
 import com.example.myapplication_pr5.ui.adapter.CustomListAdapter;
 import com.example.myapplication_pr5.ui.adapter.CustomListAdapter;
+import com.example.myapplication_pr5.ui.adapter.MyCustomListAdapter;
 import com.example.myapplication_pr5.ui.viewmodel.CarViewModel;
 
 
 public class BlankFragment5 extends Fragment {
     CarViewModel carViewModel;
-    private ListView listview;
+    RecyclerView recyclerView;
+    MyCustomListAdapter myCustomListAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,17 +42,26 @@ public class BlankFragment5 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view1 = inflater.inflate(R.layout.fragment_blank5,container,false);
-        listview = (ListView) view1.findViewById(R.id.listview);
-        CustomListAdapter carAdapter = new CustomListAdapter(getContext(), R.layout.cars, carViewModel.cars.getValue());
-        listview.setAdapter(carAdapter);
-        carViewModel.cars.observe(getViewLifecycleOwner(), cars -> carAdapter.updateCars(cars));
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Bundle bundle = new Bundle();
-               Navigation.findNavController(view).navigate(R.id.action_blankFragment5_to_blankFragment3,bundle);
-            }
-        });
+        recyclerView = view1.findViewById(R.id.recyclerView);
+        myCustomListAdapter = new MyCustomListAdapter();
+        Bundle args = getArguments();
+        if (args != null && args.containsKey("RESULT_OK_NAME") && args.containsKey("RESULT_OK_IMG")) {
+            Car car = new Car(args.getInt("RESULT_OK_IMG"), args.getString("RESULT_OK_NAME"));
+            carViewModel.insert(car);
+        }
+        Button button = view1.findViewById(R.id.button25);
+        button.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+                                          Navigation.findNavController(view).navigate(R.id.action_blankFragment5_to_blankFragment6);
+                                      }
+                                  });
+                recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(myCustomListAdapter);// установка адаптера
+        carViewModel.getAllCars().observe(getViewLifecycleOwner(), cars ->
+                myCustomListAdapter.updateBooks(cars));
+
         return view1;
     }
     @Override
