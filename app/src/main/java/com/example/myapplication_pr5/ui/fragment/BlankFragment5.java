@@ -11,15 +11,20 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.myapplication_pr5.R;
-import com.example.myapplication_pr5.ui.adapter.CarAdapter;
+import com.example.myapplication_pr5.ui.adapter.CustomListAdapter;
+import com.example.myapplication_pr5.ui.adapter.CustomListAdapter;
 import com.example.myapplication_pr5.ui.viewmodel.CarViewModel;
 
 
 public class BlankFragment5 extends Fragment {
     CarViewModel carViewModel;
+    private ListView listview;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,12 +36,15 @@ public class BlankFragment5 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view1 = inflater.inflate(R.layout.fragment_blank5,container,false);
-        Button button = view1.findViewById(R.id.button5);
-        button.setOnClickListener(new View.OnClickListener() {
+        listview = (ListView) view1.findViewById(R.id.listview);
+        CustomListAdapter carAdapter = new CustomListAdapter(getContext(), R.layout.cars, carViewModel.cars.getValue());
+        listview.setAdapter(carAdapter);
+        carViewModel.cars.observe(getViewLifecycleOwner(), cars -> carAdapter.updateCars(cars));
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Bundle bundle = new Bundle();
-                Navigation.findNavController(view).navigate(R.id.action_blankFragment5_to_blankFragment3,bundle);
+               Navigation.findNavController(view).navigate(R.id.action_blankFragment5_to_blankFragment3,bundle);
             }
         });
         return view1;
@@ -44,7 +52,6 @@ public class BlankFragment5 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        CarAdapter carAdapter = new CarAdapter(getContext());
-        carViewModel.cars.observe(getViewLifecycleOwner(), cars -> carAdapter.updateCars(cars));
     }
+
 }

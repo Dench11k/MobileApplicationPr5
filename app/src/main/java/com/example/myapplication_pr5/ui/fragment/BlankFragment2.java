@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.example.myapplication_pr5.R;
 import com.example.myapplication_pr5.data.model.Car;
-import com.example.myapplication_pr5.ui.adapter.CarAdapter;
+import com.example.myapplication_pr5.ui.adapter.CustomListAdapter;
 import com.example.myapplication_pr5.ui.viewmodel.CarViewModel;
 
 import java.util.ArrayList;
