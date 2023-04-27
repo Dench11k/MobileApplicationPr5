@@ -9,6 +9,7 @@ import com.example.myapplication_pr5.data.database.RoomDataBase.CarRoomDataBase;
 import com.example.myapplication_pr5.data.database.dao.CarDao;
 import com.example.myapplication_pr5.data.database.entity.CarEntity;
 //import com.example.myapplication_pr5.data.datasource.CarSource;
+import com.example.myapplication_pr5.data.datasource.CarSource;
 import com.example.myapplication_pr5.data.model.Car;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class CarsRepository {
     private final LiveData<List<Car>> cars;
 
     private final Context context;
-
+    CarSource carSource;
     CarRoomDataBase roomDatabase;
 
     public CarsRepository(Context applicationContext){
